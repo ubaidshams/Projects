@@ -1,0 +1,611 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    font-family: NotoSansRegular,sans-serif;
+    background: #0f0617  !important;
+}
+.nav-holder
+{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #0f0617;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    height: 11%;
+    padding: 20px;
+    z-index: 9;
+}
+.nav-left
+{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-left: 20px; */
+}
+.nav-elements
+{
+    transition: border-bottom 1s ease-in-out;
+    padding: 5px;
+}
+.nav-elements:hover:not(.no-bor)
+{
+    border-bottom: 2px solid white;
+}
+.nav-elements a
+{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    transition: border-bottom 5s linear;
+}
+.nav-elements a img
+{
+    width: 46px;
+    height: 46px;
+}
+.fa-th:hover
+{
+    color: #8230c6;
+}
+#active
+{
+    border-bottom: 2px solid white;
+}
+.nav-elements a:hover
+{
+    color: white;
+}
+.nav-elements a i
+{
+    font-size: 20px;
+    color: white;
+}
+.nav-right
+{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 16px;
+}
+.search
+{
+    background-color: rgba(49, 49, 49, 0.8);
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s ease-in-out;
+}
+.search:hover
+{
+    background-color: rgba(211, 211, 211, 0.2);
+}
+.search a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+}
+.search a:hover
+{
+    color: white;
+}
+.lang-btn
+{
+    background-color: rgba(49, 49, 49, 0.8);
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s ease-in-out;
+}
+.lang-btn:hover
+{
+    background-color: rgba(211, 211, 211, 0.2);
+    color: white;
+}
+.lang-btn a
+{
+    text-decoration: none;
+    color:white;
+}
+.login
+{
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid white;
+    transition: background-color 1s ease-in-out,color 1s ease-in-out;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    font-family: NotoSansBold,sans-serif;
+}
+.login:hover
+{
+    background-color: white;
+    color: black;
+}
+.buy-plan-btn a
+{
+    text-decoration: none;
+}
+.buy-plan-btn a button
+{
+    padding: 10px 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: #8230c6;
+    transition: background-color 1s linear;
+    font-size: 13px;
+    font-weight: bolder;
+
+}
+.buy-plan-btn a button:hover
+{
+    background-color: #510e88de;  
+}
+.side-menu
+{
+    background-color: rgba(49, 49, 49, 0.8);
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s ease-in-out;
+    cursor: pointer;
+}
+.side-menu:hover
+{
+    background-color: rgba(211, 211, 211, 0.2);
+}
+.side-menu i
+{
+    font-size: 20px;
+    color: white;
+}
+.menu-drop
+{
+    width: 20vw;
+    background-color: #0f0617;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    visibility: hidden;
+}
+.menu-drop-elemnts
+{
+    border-bottom: 2px solid hsla(0,0%,100%,.06);
+    padding: 10px;
+}
+.menu-drop a
+{
+    padding: 10px;
+    display: block;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+}
+.menu-drop a:hover:not(#menu-drop-active)
+{
+    background: hsla(0,0%,100%,.06);  
+}
+.menu-drop-active
+{
+    background: hsla(0,0%,100%,.06);
+    color: white !important;
+}
+.show
+{
+    visibility: visible;
+}
+.center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: hsla(0,0%,100%,.5);
+    font-size: 0.8rem;
+}
+.drop-btn:hover .drop-container
+{
+    display: flex;
+}
+.drop-container
+{
+    padding: 20px;
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    background-color: #0f0617;
+    width: 60vw;
+    display: none;
+    /* align-items: center; */
+    justify-content: space-between;
+    border: 1px solid hsla(0,0%,100%,.05);
+}
+.drop-row
+{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.drop-row a
+{
+    text-decoration: none;
+}
+.drop-content-links a
+{
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: lightgray;
+}
+.active-link
+{
+    background-color: hsla(0,0%,100%,.05);  
+} 
+.drop-content-links a:hover:not(.active-link)
+{
+    background-color: hsla(0,0%,100%,.05);
+}
+.drop-row a img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.drop-btn:hover .dot-menu-drop-container
+{
+    display: flex;
+}
+.dot-menu-drop-container
+{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 800px;
+    background-color: #0f0617;
+    width: 13vw;
+    border: 1px solid hsla(0,0%,100%,.05);
+    border-radius: 5px;
+    padding: 20px;
+    row-gap: 10px;
+}
+.dot-menu-drop-container a
+{
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: darkgray;
+}
+.dot-menu-drop-container a:hover
+{
+    background-color: hsla(0,0%,100%,.05);
+    color: darkgray;
+}
+.carousel-container
+{
+    position: relative;
+    /* width: 100%; */
+    top: 95px;
+}
+
+/* .carousel-item
+{
+    
+    width: 80% !important;
+    margin: auto !important;
+} */
+
+.zee-originals-container
+{
+    width: 100%;
+    /* background-color: azure; */
+    position: relative;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 40px;
+    row-gap: 20px;
+}
+.original-heading
+{
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+}
+.original-heading a
+{
+    
+    text-decoration: none;
+    font-size: 21px;
+    color: white;
+}
+.original-heading a:hover
+{
+    color: white;
+}
+.more-btn a
+{
+    text-decoration: none;
+    font-size: 14px;
+    color: #a785ff;
+}
+.more-btn a:hover
+{
+    color: #a785ff;
+}
+
+
+/* card content starts */
+
+.cards-container
+{
+    width: 90%;
+    display: flex;
+    column-gap: 10px;
+}
+.card
+{
+    width: 231px;
+    height: 346px;
+    display: flex;
+    row-gap: 10px;
+    border-radius: 30px;
+    /* transition: transform 2s linear 2s; */
+}
+.card p
+{
+    display: none;
+    font-size: 10px;
+}
+.card:hover
+{
+    background-color: white;
+    height: auto;
+    transform: scale(1.2);
+    z-index: 2;
+    padding: 10px;
+}
+.card:hover p
+{
+    display: block;
+}
+.card .card-links
+{
+    display: none;
+}
+.card-links button
+{
+    background-color: white;
+    color: gray;
+    border-radius: 5px;
+    font-size: 12px;
+    padding:0 5px;
+    border: 1px solid;
+}
+.card-links a
+{
+    margin-left: 5px;
+    text-decoration: none;
+    color: gray;
+    font-size: 14px;
+    /* font-weight: bold; */
+}
+.card-links a:hover
+{
+    color: #8230c6;
+}
+.card-links button:hover
+{
+    background-color: #8230c6;
+    color: white;
+}
+.card:hover .card-links
+{
+    display: block;
+}
+
+
+/* card content ends */
+.carousel-caption
+{
+    display: flex !important;
+    justify-content: flex-start !important;
+    flex-direction: column;
+}
+.carousel-caption h2
+{
+    text-align: left;
+}
+.carousel-item .premium-icon
+{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 14px;
+    color: rgb(217 35 35 / 83%);
+}
+.carousel-buttons
+{
+    display: flex;
+    column-gap: 10px;
+}
+.watch
+{
+    padding: 10px 15px;
+    border-radius: 6px;
+    background: rgba(0, 0  , 0, 0.4);
+    border: 1px solid white;
+    transition: background-color 1s ease-in-out,color 1s ease-in-out;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    font-family: NotoSansBold,sans-serif;
+}
+.watch:hover
+{
+    background-color: white;
+    color: black;
+}
+
+/* footer starts */
+
+.footer-holder
+{
+    margin-top: 300px;
+    border-top: 1px solid grey;
+    padding: 30px 90px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.social
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.download-apps
+{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.social-links
+{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+.social-icons
+{
+    background: hsla(0,0%,100%,.08);
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid hsla(0,0%,100%,.05);
+}
+.blue:hover
+{
+    background-color: rgb(54, 96, 173);
+}
+.pink:hover
+{
+    background-color: hotpink;
+}
+.light-blue:hover
+{
+    background-color: rgb(49, 143, 180);
+}
+.red:hover
+{
+    background-color: crimson;
+}
+.social-icons a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.social-icons a:hover
+{
+    color: white;
+}
+.general-links
+{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+.general-links a
+{
+    text-decoration: none;
+    color: grey;
+    font-size: 12px;
+    border-right: 1px solid;
+    padding-right: 20px;
+}
+.general-links a:last-child
+{
+    border: none;
+}
+.zee-links
+{
+    display: flex;
+    width: 95%;
+}
+.row
+{
+    display: flex;
+    row-gap: 10px;
+}
+.link-white
+{
+    color: white !important;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.row a
+{
+    text-decoration: none;
+    color: gray;
+    font-size: 12px;
+}
+.row a:hover
+{
+    color: #a785ff;
+}
+.copyright
+{
+    font-size: 11px;
+    color: gray;
+    line-height: normal;
+}
+/* footer ends */
+

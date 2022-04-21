@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fusion Tech</title>
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link
+      rel="shortcut icon"
+      href="/assests/images/Fusion tech.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      body
+      {
+        overflow-x: hidden;
+      }
+      .course-content
+      {
+        /* display: none; */
+        transform: scaleY(0);
+        transition: all 0.3s linear;
+      }
+      .show-courses
+      {
+        /* display: flex; */
+        transform: scaleY(1);
+      }
+      .course-arrow
+      {
+        transition: all .3s linear;
+      }
+      .arrow-rotate
+      {
+        transform: rotate(180deg);
+      }
+      .about-right
+      {
+        background-image: url('/assests/images/about-img.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-size: 100%;
+      }
+      .video
+      {
+          width: 100vw;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          visibility: hidden;
+          z-index: 3;
+          background-color: rgba(0, 0, 0, 0.9);
+      }
+      #close-iframe
+      {
+        position: absolute;
+        top: 10vh;
+        right: 10vh;
+        cursor: pointer;
+      }
+      .student-profile
+      {
+        border-radius: 10px;
+      }
+      .student-profile-1
+      {
+        width: 40%;
+        height: 40vh;
+        background: url('/assests/images/student-1-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-profile-2
+      {
+        width: 25%;
+        height: 40vh;
+        background: url('/assests/images/student-2-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-profile-3
+      {
+        width: 25%;
+        height: 40vh;
+        background: url('/assests/images/student-3-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-profile-4
+      {
+        width: 40%;
+        height: 40vh;
+        background: url('/assests/images/student-4-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-profile-5
+      {
+        width: 25%;
+        height: 40vh;
+        background: url('/assests/images/student-7-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-profile-6
+      {
+        width: 25%;
+        height: 40vh;
+        background: url('/assests/images/student-5-img.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit:cover;
+        transition: all 0.3s ease;
+      }
+      .student-details
+      {
+        width: 100%;
+        visibility: hidden;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .student-profile:hover
+      {
+        box-shadow: 0px 0px 20px 5px black;
+        transform: scale(1.05);
+      }
+      .student-profile:hover .student-details
+      {
+        background-color: black;
+        visibility: visible;
+        color: #d85c27;
+      }
+      .footer-container
+      {
+        height: 50vh;
+        background: url('/assests/images/footer-bg-1.png');
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        margin-top: 20vh;
+        box-shadow: 0px -2px 20px 5px black;
+      }
+    </style>
+  </head>
+  <body class="bg-[#04101f] font-mono">
+    <!-- navbar starts -->
+    <div
+      class="navbar z-10 sticky top-0 w-screen h-[10vh] bg-[#06203f] flex items-center shadow-[0_2px_20px_0px]"
+    >
+      <div class="logo w-1/5 h-[10vh] flex justify-around items-center">
+        <a href="index.html">
+          <img
+            src="/assests/images/Fusion tech.png"
+            alt=""
+            class="w-14 h-14 rounded-full hover:shadow-[1px_1px_20px_2px_#d85c27] hover:scale-[1.05]"
+          />
+        </a>
+      </div>
+
+      <div class="nav-links w-1/2 flex justify-evenly">
+        <a
+          href="index.html"
+          class=" font-semibold text-[#d85c27] flex gap-x-2"
+          ><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg><span>Home</span></a
+        >
+
+        <div class="courses-drop flex flex-col items-center">
+          <a class="flex cursor-pointer items-center gap-x-3 justify-center text-slate-300 font-semibold hover:text-[#d85c27]" id="course-btn" 
+          >
+          <svg id="course-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+          </svg>
+          <span id="course-text">Courses</span>
+          <svg id="course-arrow" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 course-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+          </a
+        > 
+        <div id="course-content" class="course-content p-4 flex  flex-col absolute top-[10.5vh] bg-[#2F5C8F] w-[12vw] shadow-[0_2px_5px_2px] items-center justify-between rounded" id="course-content">
+          <a href="#java-fstack" id="jf-link" class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">Java Full Stack</a>
+          <a href="#c++"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">C, C++</a>
+          <a href="#J2EE"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center" id="J2EE-link">J2EE</a>
+          <a href="#mern-stack"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">MERN Stack</a>
+          <a href="#mean-stack"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">MEAN Stack</a>
+          <a href="#python-full-stack"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">Python Full Stack</a>
+          <a href="#software-testing"class="w-[100%] font-semibold py-2 border-b border-[black] text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">Java Testing</a>
+          <a href="#software-testing"class="w-[100%] font-semibold py-2  text-[#b999be] hover:bg-[#04101f] hover:rounded text-center">Python Testing</a>
+        </div>
+        </div>
+
+        <a href="#placement-gallery" class="text-slate-300 font-semibold hover:text-[#d85c27]"
+          >Placements</a
+        >
+
+        <a href="#contact-us" class="flex gap-x-2 items-center text-slate-300     font-semibold hover:text-[#d85c27]"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>Contact Us</span>
+          </a>
+
+        <a href="#about" class="text-slate-300 font-semibold hover:text-[#d85c27]"
+          >About Us</a
+        >
+      </div>
+      <div class="nav-right w-1/4 flex items-center justify-evenly">
+        <a
+          href="signup.html"
+          class="text-slate-300 font-semibold hover:text-[#d85c27]"
+          >Sign Up</a
+        >
+        <a
+          href="login.html"
+          class="text-slate-300 font-semibold hover:text-[#d85c27]"
+          >Login</a
+        >
+      </div>
+    </div>
+    <!-- Navbar ends -->
+
+    <!-- About us starts -->
+
+    <div class="about-container w-screen flex items-center justify-center my-20" id="about">
+      <div class="about-holder shadow-[0_0_20px_5px_black] flex justify-between p-8 w-[90%] text-slate-300">
+        <div class="about-left pl-4 w-[60%] flex flex-col gap-y-3 text-justify">
+          <h1 class="text-6xl font-mono font-bold text-slate-500">Fusion Tech</h1>
+          <p >Fusion Tech is a best-in-class learning solutions organization headquartered in India’s IT capital, Bangalore. We offer a wide range of courses in the area of Java development.</p>
+          <p>A “finishing school” in many ways, the institute provides young job aspirants the perfect launch-pad to build a rewarding career in the growing IT sector. From its humble beginnings, Fusion Tech has exponentially grown to be the world’s largest Java development training organization spread across countries. At Fusion Tech, we ensure training is imparted by specialists with proven subject matter expertise and who have spent over a decade in their area of specialization. Our faculty are highly competent, skilled and dedicated to giving their best towards the professional development of our students. Besides training, we also provide placement assistance to our students and most of the big corporates in the corporate world hire our trained talent.</p>
+          <p>It is indeed our pleasure to have placed over thousands of job-seekers in various IT firms across India over the years with an aim to place thousands more! Building competency into over 5000 students a month, Fusion Tech is where talent meets opportunity and we believe your search for the dream job or the dream professional ends here.</p>
+        </div>
+        <div class="about-right w-[40%]"></div>
+      </div>
+    </div>
+
+    <!-- About us ends -->
+
+    <!-- video content starts -->
+    <div class="video" id="vid">
+      <iframe width="1106" height="622" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="vid-player"></iframe>
+      
+      <svg id="close-iframe" onclick="closeIframe()" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <!-- video content ends -->
+
+    <!-- Course content starts -->
+
+        <div class="courses-container flex flex-col gap-y-8   w-[100%] p-[5%]" id="Courses">
+
+          <h1 class="text-6xl text-slate-300">Courses Offered</h1>          
+
+          <div id="java-fstack" class="flex transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%] ">
+              <img src="/assests/images/java-full-stack-bg.webp" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">JAVA FULL STACK</h1>
+              <p class="text-justify">Java Full Stack course is more of job-oriented training which is designed as per current industry standards. You can start your career in IT industry with basic and advance skills. Course will be trained by top industry experts who have passion to train students and help them get job in IT industry or excel in IT industry.</p>
+
+              <button onclick="openJstack()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="J2EE" class="flex flex-row-reverse transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/j2ee-courses-bg.jpg" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">J2EE</h1>
+              <p class="text-justify">J2EE course is more of job-oriented training which is designed as per current industry standards. You can start your career in IT industry with basic and advance skills. Course will be trained by top industry experts who have passion to train students and help them get job in IT industry or excel in IT industry.</p>
+              <button onclick="openJ2EE()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="mean-stack" class="flex transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/mean-stack-bg.jpeg" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">MEAN STACK</h1>
+              <p class="text-justify">You will be ready to develop web application, mobile application & automation testing, Web designing and full-fledged application developing by end of this training.</p>
+              <button onclick="openMeanStack()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="mern-stack" class="flex flex-row-reverse transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/mern-stack-bg.jpg" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">MERN</h1>
+              <p class="text-justify">Take your career as a web developer to the next level with this Full-Stack Web Developer Master’s Program, where you’ll become an expert at front and back-end JavaScript technologies of the most popular MEAN (Mongo DB, Express, Angular and Node.js) Stack or MERN (Mongo DB, Express, React and Node.js) Stack.</p>
+              <button onclick="openMernStack()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="python-full-stack" class="flex transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/python-full-stack-bg.png" alt="" class="h-[40vh]">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">PYTHON FULL STACK</h1>
+              <p class="text-justify">Python is a versatile all-purpose high-level language which is used for scientific data and other structured as well as unstructured data. A full-stack Python developer has expertise in using the Python suite of languages for all the applications. 
+                  <br><br>
+                Python is one language that permits our computer systems to execute software and communicate with each other. Python code interacts with code which is written in other languages such as C and JavaScript to provide an entire web stack.</p>
+                <button onclick="openPyStack()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="c++" class="flex flex-row-reverse transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/c++-bg.avif" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">C++</h1>
+              <p class="text-justify">C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes".</p>
+              <button onclick="openC()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="software-testing" class="flex transition-all duration-300 ease-linear justify-evenly  p-9 hover:shadow-[0_0_10px_2px_#06203f] hover:bg-black hover:scale-105">
+            <div class="img w-[40%]">
+              <img src="/assests/images/software-testing-bg.webp" alt="">
+            </div>
+            <div class="content w-[50%] flex flex-col gap-y-5 text-gray-500">
+              <h1 class="text-5xl text-stone-300">SOFTWARE TESTING</h1>
+              <p class="text-justify">Software testing is the process of evaluating and verifying that a software product or application does what it is supposed to do. The benefits of testing include preventing bugs, reducing development costs and improving performance.</p>
+              <button onclick="openSTest()" class="bg-[#06203f] flex w-[25%] items-center justify-evenly h-10 text-slate-300 rounded-3xl hover:bg-white hover:text-black">
+                <span>Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+    <!-- Course content ends -->
+
+    <!-- Placements content starts -->
+
+        <div class="placement-container w-screen flex justify-center">
+
+          <div class="placement-gallery w-[90%] flex flex-col gap-y-8" id="placement-gallery">
+
+            <h1 class="text-6xl text-slate-500 ml-6">Placement Gallery</h1>
+
+            <div class="row-1 flex justify-around">
+
+                <div class="student-profile-1 student-profile flex flex-col items-center justify-end">
+                  <div class="student-details flex flex-col items-center">
+                    <div class="student-name">
+                      <p class="text-xl">Mark Freeman</p>
+                    </div>
+                    <div class="company-name">
+                      <p>Infosys</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="student-profile-2 student-profile flex flex-col items-center justify-end">
+                  <div class="student-details flex flex-col items-center">
+                    <div class="student-name">
+                      <p class="text-xl">Lydia Martin</p>
+                    </div>
+                    <div class="company-name">
+                      <p>Capegemini</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="student-profile-3 student-profile flex flex-col items-center justify-end">
+                  <div class="student-details flex flex-col items-center">
+                    <div class="student-name">
+                      <p class="text-xl">Scott McCall</p>
+                    </div>
+                    <div class="company-name">
+                      <p>IBM</p>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="row-2 flex flex-row-reverse justify-around">
+
+              <div class="student-profile-4 student-profile flex flex-col items-center justify-end">
+                <div class="student-details flex flex-col items-center">
+                  <div class="student-name">
+                    <p class="text-xl">Gwen Parker</p>
+                  </div>
+                  <div class="company-name">
+                    <p>Microsoft</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="student-profile-5 student-profile flex flex-col items-center justify-end">
+                <div class="student-details flex flex-col items-center">
+                  <div class="student-name">
+                    <p class="text-xl">Jordan Parrsih</p>
+                  </div>
+                  <div class="company-name">
+                    <p>Emphasis</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="student-profile-6 student-profile flex flex-col items-center justify-end">
+                <div class="student-details flex flex-col items-center">
+                  <div class="student-name">
+                    <p class="text-xl">Malia Hale</p>
+                  </div>
+                  <div class="company-name">
+                    <p>Amazon</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+    <!-- Placement content ends -->
+
+
+    <!-- Footer content starts -->
+
+    <div class="footer-container w-screen
+     flex flex-col gap-y-5">
+
+        <div class="footer-links-block w-[50%] h-[90%] flex justify-evenly gap-x-10 p-12">
+
+            <div class="general-links  h-full flex flex-col justify-evenly mt-4">
+              
+              <a href="index.html">
+                <img src="/assests/images/Fusion tech.png"
+                      alt=""
+                      class="w-14 h-14 rounded-full hover:shadow-[1px_1px_20px_5px_black] hover:scale-[1.05]"
+                    />
+              </a>
+
+              <a href="#Courses" class="text-[#d85c27] hover:underline">Courses</a>
+              <a href="#placement-gallery" class="text-[#d85c27] hover:underline">Placements</a>
+              <a href="#about" class="text-[#d85c27] hover:underline">About Us</a>
+              <a href="signup.html" class="text-[#d85c27] hover:underline">Sign Up</a>
+              <a href="login.html" class="text-[#d85c27] hover:underline">Log In</a>
+              
+            </div>
+
+            <div class="company-links mt-6 h-full flex flex-col justify-evenly">
+              <p class="text-xl font-semibold">Our Top Companies</p>
+              <a href="" class="text-[#d85c27] hover:underline">Wipro</a>
+              <a href="" class="text-[#d85c27] hover:underline">IBM</a>
+              <a href="" class="text-[#d85c27] hover:underline">Infosys</a>
+              <a href="" class="text-[#d85c27] hover:underline">Capegemini</a>
+              <a href="" class="text-[#d85c27] hover:underline">TCS</a>
+            </div>
+
+              <div class="contact-us h-full flex flex-col items-start mt-10 gap-y-5" id="contact-us">
+              <p class="text-xl font-semibold">Get In Touch With Us</p>
+              <a href="tel:+91 7022177781" class="flex gap-x-2 items-center text-[#d85c27] hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 7022177781</a>
+              
+              <a href="mailto:fusiontech@example.com" class="flex items-center gap-x-2 text-[#d85c27] hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                fusiontech@example.com
+              </a>
+
+              <div class="social-icons text-3xl
+              flex gap-x-4 text-white">
+                <a href="" class="hover:bg-blue-900 hover:shadow-[0_0_10px_black] w-12 h-12 rounded-full flex items-center justify-center">
+                  <i class="fa-brands fa-facebook-square"></i>
+                </a>
+                <a href="" class="hover:bg-sky-400
+                hover:shadow-[0_0_10px_black] w-12 h-12 rounded-full flex items-center justify-center">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="" class="hover:bg-pink-500 hover:shadow-[0_0_10px_black] w-12 h-12 rounded-full flex items-center justify-center">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+        <div class="copyright w-full bg-black text-stone-500 text-center">
+          <p>Fusion Tech &copy;-2022</p>
+        </div>
+    </div>
+
+    <!-- Footer content ends -->
+
+
+    <script src="./index.js"></script>
+  </body>
+</html>
